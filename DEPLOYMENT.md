@@ -52,7 +52,7 @@ cd client && npm install && npm run dev     # http://localhost:5173
 
 ## Redeploy
 
-Pushing to `main` triggers a Vercel deployment through the GitHub integration. To deploy manually:
+Pushing to `main` triggers a Vercel deployment through the GitHub integration. Manual CLI deploys are also available if you need to redeploy immediately. To deploy manually:
 
 ```bash
 cd server && vercel --prod
