@@ -19,6 +19,7 @@
 
 - **Frontend:** Vite + React, deployed from the `client` directory as a static Vercel project (`libra-library-bolu`).
 - **Backend:** Express, deployed from the `server` directory as a Vercel Node function at `api/index.js`. `server/vercel.json` rewrites `/api/(.*)` to that function so all Express routes work.
+- Both Vercel projects have their root directory set explicitly (`client` and `server`) so GitHub pushes build the right folder.
 - **Database:** Supabase PostgreSQL. The API connects with the transaction pooler connection string stored as a Vercel environment variable.
 - **Authentication:** JWT in localStorage. The frontend sends `Authorization: Bearer <token>` to the API.
 
