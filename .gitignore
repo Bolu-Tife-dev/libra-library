@@ -11,3 +11,5 @@ dist/
 
 # Local JSON store (Supabase is the real database)
 data/store.json
+
+.vercel
