@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/30 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-indigo-600 text-white shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_3px_0_#3730a3,0_8px_14px_-6px_rgba(67,56,202,.6)] hover:bg-indigo-700 active:translate-y-[3px] active:shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_0_0_#3730a3] dark:bg-indigo-500 dark:shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_3px_0_#312e81,0_8px_14px_-6px_rgba(99,102,241,.5)] dark:hover:bg-indigo-600;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-300 bg-white text-slate-700 shadow-[0_2px_0_#e2e8f0] hover:bg-slate-50 active:translate-y-[2px] active:shadow-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:shadow-[0_2px_0_#1e293b] dark:hover:bg-slate-800;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_3px_0_#9f1239] hover:bg-rose-700 active:translate-y-[3px] active:shadow-none;
+  }
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 shadow-[inset_0_1px_2px_rgba(15,23,42,.05)] focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300;
+  }
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .perspective-scene {
+    perspective: 1000px;
+    perspective-origin: 50% 45%;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  /* Extruded card edge — a solid, physical feel without gradients. */
+  .depth-panel {
+    box-shadow: 0 1px 0 #e2e8f0, 0 2px 0 #e2e8f0, 0 3px 0 #cbd5e1, 0 10px 20px -12px rgba(15, 23, 42, 0.35);
+  }
+  .dark .depth-panel {
+    box-shadow: 0 1px 0 #1e293b, 0 2px 0 #1e293b, 0 3px 0 #0f172a, 0 10px 20px -12px rgba(0, 0, 0, 0.7);
+  }
+  .grid-floor {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.35) 1px, transparent 1px);
+    background-size: 38px 38px;
+  }
+  .dark .grid-floor {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  }
+  .sway-3d {
+    animation: sway 14s ease-in-out infinite;
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 7.5s ease-in-out infinite;
+    animation-delay: -2.5s;
+  }
+  .animate-float-slower {
+    animation: float 9s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+  .book-3d {
+    transform: var(--book-transform);
+    transition: transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .book-3d:hover {
+    transform: var(--book-transform) scale(1.07) translateY(-6px);
+  }
+  .reveal {
+    opacity: 0;
+    transform: perspective(800px) rotateX(9deg) translateY(26px);
+    transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateZ(0); }
+  50% { transform: translateY(-14px) rotateZ(1.8deg); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotateY(-7deg) rotateX(2deg); }
+  50% { transform: rotateY(7deg) rotateX(-2deg); }
+}

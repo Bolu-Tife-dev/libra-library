@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.vercel/
+*.log
+.DS_Store
+
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# Local JSON store (Supabase is the real database)
+data/store.json
